@@ -37,6 +37,33 @@ public class WebTableSorting {
         List<String> sortedList = originalList.stream().sorted().collect(Collectors.toList());
         
         Assert.assertTrue(originalList.equals(sortedList));
+        
+        
+        
+        /* AUTOMATING PAGINATION SCENARIOS*/
+        //Test Case- Scan the name column and find out the price of Mango
+        List <String> price;
+        do {
+			
+        	List<WebElement> val= driver.findElements(By.xpath("//tr/td[1]"));
+        	price= val.stream().filter(s->s.getText().contains("Mango"))
+        		.map(s->getPrice(s)).collect(Collectors.toList());
+        
+        	price.forEach(f->System.out.println(f));
+        	
+        	if (price.size()<1) {
+        	driver.findElement(By.cssSelector("[aria-label*='Next']")).click();
+			
+        	}
+        } while (price.size()<1);
+        
+        driver.quit();
+	}
+
+	private static String getPrice(WebElement s) {
+		// TODO Auto-generated method stub
+		String value= s.findElement(By.xpath("following-sibling::td[1]")).getText();
+		return value;
 	}
 
 }
