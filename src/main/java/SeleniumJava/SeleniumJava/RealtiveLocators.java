@@ -27,6 +27,10 @@ public class RealtiveLocators {
         //toLeftOf locators
         WebElement radioBtn =driver.findElement(By.xpath("//label[text()='Check me out if you Love IceCreams!']"));
         driver.findElement(with(By.tagName("input")).toLeftOf(radioBtn)).click();
+        
+        //toRightof locators
+        WebElement radioBtnLabel = driver.findElement(By.id("inlineRadio1"));
+       System.out.println(driver.findElement(with(By.tagName("label")).toRightOf(radioBtnLabel)).getText());
 	}     
 
 }
