@@ -16,9 +16,17 @@ public class RealtiveLocators {
         driver.manage().window().maximize();
         driver.get("https://rahulshettyacademy.com/angularpractice/");
         
+        //above locators
         WebElement nameBox = driver.findElement(By.cssSelector("[name='name']"));
-        
         System.out.println(driver.findElement(with(By.tagName("label")).above(nameBox)).getText());
-	}
+        
+        //below locators 
+        WebElement dobLabel=driver.findElement(By.cssSelector("[for='dateofBirth']"));
+        driver.findElement(with(By.tagName("input")).below(dobLabel)).click();
+        
+        //toLeftOf locators
+        WebElement radioBtn =driver.findElement(By.xpath("//label[text()='Check me out if you Love IceCreams!']"));
+        driver.findElement(with(By.tagName("input")).toLeftOf(radioBtn)).click();
+	}     
 
 }
