@@ -30,7 +30,7 @@ public class RealtiveLocators {
         
         //toRightof locators
         WebElement radioBtnLabel = driver.findElement(By.id("inlineRadio1"));
-       System.out.println(driver.findElement(with(By.tagName("label")).toRightOf(radioBtnLabel)).getText());
+        System.out.println(driver.findElement(with(By.tagName("label")).toRightOf(radioBtnLabel)).getText());
 	}     
 
 }
