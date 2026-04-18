@@ -19,6 +19,20 @@ public class InovkingMultWindow {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://rahulshettyacademy.com/angularpractice/");
+        
+        /*Test Case-
+         * Hit "https://rahulshettyacademy.com/angularpractice/" URL
+         * Switch to Next Window URL as "https://rahulshettyacademy.com/"
+         * Click on Browse Course 
+         * Product list appears after that scroll down by "window.scrollBy(0,2500)"
+         * search for "Core Java for Automation Testers + Interview Programs" text 
+         * return back to 1st(Parent Window) 
+         * In name text field give input as "Core Java for Automation Testers + Interview Programs"
+         * quit 
+         * */
+        
+//        AJAHSD
+        
         driver.switchTo().newWindow(WindowType.TAB);        
         
         Set<String> handle= driver.getWindowHandles();
@@ -51,6 +65,8 @@ public class InovkingMultWindow {
         driver.switchTo().window(parentId1);
         
         driver.findElement(By.cssSelector("[name='name']")).sendKeys(ch3);
+        
+        driver.close();
         
         }
 
