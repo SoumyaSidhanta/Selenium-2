@@ -1,10 +1,14 @@
 package SeleniumJava.SeleniumJava;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
@@ -12,7 +16,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class InovkingMultWindow {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		// TODO Auto-generated method stub
 
 		System.setProperty("web driver.chrome.driver", "C:\\Users\\mohan\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
@@ -28,10 +32,11 @@ public class InovkingMultWindow {
          * search for "Core Java for Automation Testers + Interview Programs" text 
          * return back to 1st(Parent Window) 
          * In name text field give input as "Core Java for Automation Testers + Interview Programs"
+         * take screen shot of that web element 
          * quit 
          * */
         
-//        AJAHSD
+
         
         driver.switchTo().newWindow(WindowType.TAB);        
         
@@ -64,9 +69,17 @@ public class InovkingMultWindow {
    
         driver.switchTo().window(parentId1);
         
-        driver.findElement(By.cssSelector("[name='name']")).sendKeys(ch3);
+        WebElement name= driver.findElement(By.cssSelector("[name='name']"));
+        name.sendKeys(ch3);
         
-        driver.close();
+        //ScreenShot 
+        File file= name.getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(file, new File("Shot.png"));
+        
+        //Get Height and Width 
+        System.out.println(name.getRect().getDimension().getHeight());
+        System.out.println(name.getRect().getDimension().getWidth());
+        driver.quit();
         
         }
 
